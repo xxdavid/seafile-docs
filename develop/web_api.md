@@ -1641,18 +1641,19 @@ check if a dir has a corresponding sub_repo, if it does not have, create one
 
 #### <a id="copy-file"></a>Copy File ###
 
-**POST** https://cloud.seafile.com/api2/repos/{repo_id}/fileops/copy/
+**POST** https://cloud.seafile.com/api2/repos/{repo-id}/file/?p=/
 
 **Request parameters**
 
-* p: source folder path, defaults to `"/"`
+* p: source parent folder path, defaults to `"/"`
+* operation
 * file_names: list of file/folder names to copy. Multiple file/folder names can be seperated by `:`.
 * dst_repo: the destination repo id
 * dst_dir: the destination folder in `dst_repo`
 
 **Sample request**
 
-    curl -d "dst_repo=73ddb2b8-dda8-471b-b7a7-ca742b07483c&dst_dir=/&file_names=foo.c" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' "https://cloud.seafile.com/api2/repos/c7436518-5f46-4296-97db-2fcba4c8c8db/fileops/copy/
+    curl -d "operation=copy&dst_repo=73ddb2b8-dda8-471b-b7a7-ca742b07483c&dst_dir=/&file_names=foo.c" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' "https://cloud.seafile.com/api2/repos/c7436518-5f46-4296-97db-2fcba4c8c8db/file/?p=/"
 
 **Sample response**
 
@@ -1697,7 +1698,7 @@ check if a dir has a corresponding sub_repo, if it does not have, create one
 
 #### <a id="delete-file"></a>Delete File ###
 
-**DELETE** https://cloud.seafile.com/api2/repos/{repo-id}/file/?p=/foo
+**DELETE** https://cloud.seafile.com/api2/repos/{repo-id}/file/?p=/foo.c
 
 **Request parameters**
 
